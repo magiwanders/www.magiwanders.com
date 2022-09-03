@@ -26,6 +26,7 @@ function build(json) {
 
 function build_menu(menu) {
     for (var i=0; i<menu.length; i++) {
+        const menu_div = document.createElement("div")
         const entry = document.createElement("a")
         entry.href = menu[i].href
         entry.innerHTML = '← ' + menu[i].name
@@ -36,7 +37,10 @@ function build_menu(menu) {
         if (i==0) menu_entry.style["margin-top"] = "1em"
         menu_entry.id = "menu_entry"
         menu_entry.appendChild(entry) 
-        document.body.insertBefore(menu_entry, document.body.children[0]);
+        menu_div.style.position = 'sticky'
+        menu_div.style.top = '10px'
+        menu_div.appendChild(menu_entry)
+        document.body.insertBefore(menu_div, document.body.children[0]);
     }
 }
 
