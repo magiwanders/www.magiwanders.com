@@ -13,16 +13,29 @@
         ]
     },
     "section_2": {
-        "category_0":{
-            "subcat_0":{
+        "Volunteering":{
+            "[IT] S.C.I. - Servizio Civile Internazionale":{
                 "Website": {
-                    "image": "",
-                    "title": "",
-                    "link": "",
-                    "description": ""
+                    "link": "https://sci-italia.it/"
+                },
+                "Workcamps": {
+                    "link": "https://workcamps.sci.ngo/icamps/"
+                },
+                "Long Term Volunteering": {
+                    "link": "https://sci-italia.it/volontariato-internazionale/volontariato-a-lungo-termine/"
                 }
             },
-            "subcat_1":{},
+            "[IT] Oikos Volontariato":{
+                "Website": {
+                    "link": "http://www.oikos.org/"
+                },
+                "Workcamps": {
+                    "link": "http://www.oikos.org/campi/default.htm"
+                },
+                "Long Term Volunteering": {
+                    "link": "http://www.volontariato.org/progettivolontariato/default.htm"
+                }
+            },
             "subcat_2":{}
         },
         "category_1":{},

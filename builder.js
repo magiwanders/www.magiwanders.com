@@ -70,19 +70,31 @@ function section_1(section_1, section_2) {
         div.appendChild(line)
     }
     if (section_2 != undefined) {
+        const sticky = document.createElement("div")
         var keys = Object.keys(section_2)
         for (var i=0; i<keys.length; i++) {
             const link = document.createElement("a")
+            link.className = keys[i]
             link.href = "#" + keys[i]
-            link.onclick = function toggle() {
-                console.log(keys[i])
-                console.log(this)
+            link.onclick = (e) => {
+                var section_2_children = document.getElementsByClassName('section-2')[0].children
+                for (var j=0; j < section_2_children.length; j++) {
+                    console.log(section_2_children[j].id, e.target.className)
+                    if (section_2_children[j].id == e.target.className) {
+                        section_2_children[j].style.display = 'block'
+                    } else {
+                        section_2_children[j].style.display = 'none'
+                    }
+                }
+
             }
             link.innerHTML = '→ ' + keys[i]
             const br = document.createElement("br")
-            div.appendChild(br)
-            div.appendChild(link)
+            sticky.appendChild(br)
+            sticky.appendChild(link)
         }
+        sticky.style.position = 'sticky'
+        div.appendChild(sticky)
     }
     div.className = "section-1"
     return div
@@ -92,14 +104,42 @@ function section_2(section_2) {
     const div = document.createElement("div")
     var categories = Object.keys(section_2)
     for(var i=0; i<categories.length; i++) {
+        console.log(categories[i])
         const category = document.createElement('div')
-        category.id = categories[i]
-        var subcategories = Object.keys(categories)
+        category.innerHTML = ''
+        var subcategories = Object.keys(section_2[categories[i]])
+        const category_title = document.createElement('h1')
+        category_title.innerHTML = categories[i]
+        category.appendChild(category_title)
         for(var j=0; j<subcategories.length; j++) {
-            const subcategory = document.createElement('h3')
-            subcategory.innerHTML = subcategories[j].title
+            console.log('     ' + subcategories[i])
+            const subcategory = document.createElement('div')
+            const title = document.createElement('h2')
+            title.innerHTML = "&nbsp;&nbsp;" + subcategories[j]
+            subcategory.appendChild(title)
+            var list = Object.keys(section_2[categories[i]][subcategories[j]])
+            for (var k=0; k<list.length; k++) {
+                console.log('          ' + list[k])
+                const link = document.createElement('a')
+                link.href = section_2[categories[i]][subcategories[j]][list[k]].href
+                link.style.display = 'inline'
+                link.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;" + list[k] 
+                link_div.appendChild(link)
+                const description = document.createElement('p')
+                if (section_2[categories[i]][subcategories[j]][list[k]].description!=undefined) {
+                    description.innerHTML = ' - ' + section_2[categories[i]][subcategories[j]][list[k]].description
+                    description.style.display = 'inline'
+                    description.style['font-size'] = '0.75em'
+                    link_div.appendChild(description)
+                }
+                const link_div = document.createElement('div')
+                link_div.style['padding-left'] = '9em'
+                link_div.style['text-indent'] = '-9em'
+                subcategory.appendChild(link_div)
+            }
             category.appendChild(subcategory)
         }
+        category.id = categories[i]
         div.appendChild(category)
     }
 
