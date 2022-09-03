@@ -74,8 +74,11 @@ function section_1(section_1, section_2) {
         for (var i=0; i<keys.length; i++) {
             const link = document.createElement("a")
             link.href = "#" + keys[i]
-            link.onclick = "return toggle('"+keys[i]+"');"
-            link.innerHTML = '← ' + keys[i]
+            link.onclick = function toggle() {
+                console.log(keys[i])
+                console.log(this)
+            }
+            link.innerHTML = '→ ' + keys[i]
             const br = document.createElement("br")
             div.appendChild(br)
             div.appendChild(link)
@@ -87,6 +90,19 @@ function section_1(section_1, section_2) {
 
 function section_2(section_2) {
     const div = document.createElement("div")
+    var categories = Object.keys(section_2)
+    for(var i=0; i<categories.length; i++) {
+        const category = document.createElement('div')
+        category.id = categories[i]
+        var subcategories = Object.keys(categories)
+        for(var j=0; j<subcategories.length; j++) {
+            const subcategory = document.createElement('h3')
+            subcategory.innerHTML = subcategories[j].title
+            category.appendChild(subcategory)
+        }
+        div.appendChild(category)
+    }
+
     div.className = "section-2"
     return div
 }
