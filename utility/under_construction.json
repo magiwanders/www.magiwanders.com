@@ -1,0 +1,19 @@
+{
+    "title": "Magi Wanders",
+    "menu": {
+        "0":{
+            "name": "home",
+            "href": "../index.html"
+        }
+    },
+    "section-1": {
+        "title": "Sorry",
+        "subtitle": "This page is under construction...",
+        "lines": [
+            "...and coming soon :)"
+        ]
+    },
+    "section-2": {
+
+    }
+}
