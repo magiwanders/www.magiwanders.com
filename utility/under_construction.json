@@ -12,5 +12,21 @@
         "lines": [
             "...and coming soon :)"
         ]
+    },
+    "section_2": {
+        "category_0":{
+            "subcat_0":{
+                "Google": {
+                    "image": "",
+                    "title": "",
+                    "link": "",
+                    "description": ""
+                }
+            },
+            "subcat_1":{},
+            "subcat_2":{}
+        },
+        "category_1":{},
+        "category_2":{}
     }
 }
