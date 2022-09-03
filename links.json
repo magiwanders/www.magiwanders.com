@@ -16,52 +16,56 @@
         "Volunteering":{
             "[IT] S.C.I. - Servizio Civile Internazionale":{
                 "Website": {
-                    "link": "https://sci-italia.it/"
+                    "href": "https://sci-italia.it/"
                 },
                 "Workcamps": {
-                    "link": "https://workcamps.sci.ngo/icamps/"
+                    "href": "https://workcamps.sci.ngo/icamps/"
                 },
                 "Long Term Volunteering": {
-                    "link": "https://sci-italia.it/volontariato-internazionale/volontariato-a-lungo-termine/"
+                    "href": "https://sci-italia.it/volontariato-internazionale/volontariato-a-lungo-termine/"
                 }
             },
             "[IT] Oikos Volontariato":{
                 "Website": {
-                    "link": "http://www.oikos.org/"
+                    "href": "http://www.oikos.org/"
                 },
                 "Workcamps": {
-                    "link": "http://www.oikos.org/campi/default.htm"
+                    "href": "http://www.oikos.org/campi/default.htm"
                 },
                 "Long Term Volunteering": {
-                    "link": "http://www.volontariato.org/progettivolontariato/default.htm"
+                    "href": "http://www.volontariato.org/progettivolontariato/default.htm"
                 }
             },
             "Other Volunteering":{
                 "[IT] Legambiente Workamps": {
-                    "link": "https://www.legambiente.it/legambiente/campi-di-volontariato/cerca/#/cerca-campi/esteri"
+                    "href": "https://www.legambiente.it/legambiente/campi-di-volontariato/cerca/#/cerca-campi/esteri"
                 },
                 "Workaway": {
-                    "link": "https://www.workaway.info/en/hostlist",
+                    "href": "https://www.workaway.info/en/hostlist",
                     "description": "Travel and volunteering in private homes and organizations."
                 },
                 "WWOOF": {
-                    "link": "https://wwoof.net/#destination",
+                    "href": "https://wwoof.net/#destination",
                     "description": "Travel Working in Farms and similar projects."
                 },
                 "Palombar": {
-                    "link": "https://www.palombar.pt/pt/",
+                    "href": "https://www.palombar.pt/pt/",
                     "description": "Pigeonhuts restoration and territory conservation in north-east Portugal."
                 },
                 "H.U.J.": {
-                    "link": "http://www.huj.am/",
+                    "href": "http://www.huj.am/",
                     "description": "Organizes various volunteering projects in Armenia (environmental, social issues, health)."
                 },
                 "[IT] A.V.I.S.": {
-                    "link": "https://www.avis.it/unisciti-a-noi/diventa-donatore/",
+                    "href": "https://www.avis.it/unisciti-a-noi/diventa-donatore/",
                     "description": "Blood Donation"
                 },
-                "Protezione Civile": {
-                    "link": "http://www.protezionecivile.gov.it/servizio-nazionale/strutture-operative/volontariato/come-diventare-volontario"
+                "[IT] Protezione Civile": {
+                    "href": "http://www.protezionecivile.gov.it/servizio-nazionale/strutture-operative/volontariato/come-diventare-volontario"
+                },
+                "[IT] S.V.E.": {
+                    "href": "https://serviziovolontarioeuropeo.it/progetti-sve-disponibili/",
+                    "description": "Servizio Volontario Europeo"
                 }
             }
         },
