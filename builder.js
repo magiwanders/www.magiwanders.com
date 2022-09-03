@@ -73,27 +73,31 @@ function section_1(section_1, section_2) {
         const sticky = document.createElement("div")
         var keys = Object.keys(section_2)
         for (var i=0; i<keys.length; i++) {
-            const link = document.createElement("a")
-            link.className = keys[i]
-            link.href = "#" + keys[i]
-            link.onclick = (e) => {
-                var section_2_children = document.getElementsByClassName('section-2')[0].children
-                for (var j=0; j < section_2_children.length; j++) {
-                    console.log(section_2_children[j].id, e.target.className)
-                    if (section_2_children[j].id == e.target.className) {
-                        section_2_children[j].style.display = 'block'
-                    } else {
-                        section_2_children[j].style.display = 'none'
-                    }
-                }
+            const category_link = document.createElement("a")
+            category_link.href = "#" + keys[i]
+            // category_link.style.color = color(i%10)
+            category_link.id = i%10
+            category_link.addEventListener('mouseenter', (e) => {e.target.style.color = color(parseInt(e.target.id))})
+            category_link.addEventListener('mouseout', (e) => {e.target.style.color = "#7A7C80"})
+            // link.onclick = (e) => {
+            //     var section_2_children = document.getElementsByClassName('section-2')[0].children
+            //     for (var j=0; j < section_2_children.length; j++) {
+            //         console.log(section_2_children[j].id, e.target.className)
+            //         if (section_2_children[j].id == e.target.className) {
+            //             section_2_children[j].style.display = 'block'
+            //         } else {
+            //             section_2_children[j].style.display = 'none'
+            //         }
+            //     }
 
-            }
-            link.innerHTML = '→ ' + keys[i]
+            // }
+            category_link.innerHTML = '→ ' + keys[i]
             const br = document.createElement("br")
             sticky.appendChild(br)
-            sticky.appendChild(link)
+            sticky.appendChild(category_link)
         }
         sticky.style.position = 'sticky'
+        sticky.style.top = '100px'
         div.appendChild(sticky)
     }
     div.className = "section-1"
@@ -110,6 +114,7 @@ function section_2(section_2) {
         var subcategories = Object.keys(section_2[categories[i]])
         const category_title = document.createElement('h1')
         category_title.innerHTML = categories[i]
+        category_title.style.color = color(i%10)
         category.appendChild(category_title)
         for(var j=0; j<subcategories.length; j++) {
             console.log('     ' + subcategories[i])
@@ -124,6 +129,7 @@ function section_2(section_2) {
                 const link = document.createElement('a')
                 link.href = section_2[categories[i]][subcategories[j]][list[k]].href
                 link.style.display = 'inline'
+                link.style.color = color(i%10)
                 link.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;" + list[k] 
                 link_div.appendChild(link)
                 const description = document.createElement('p')
@@ -141,10 +147,32 @@ function section_2(section_2) {
             subcategory.style['text-indent'] = '-2.5em'
             category.appendChild(subcategory)
         }
+        if (i>0) {
+            const separator = document.createElement('br')
+            div.appendChild(separator)
+            const separator2 = document.createElement('br')
+            div.appendChild(separator2)
+        }
         category.id = categories[i]
         div.appendChild(category)
     }
 
     div.className = "section-2"
     return div
+}
+
+function color(n) {
+    switch(n) {
+        case 0: return "#dd7e6b"; // light red berry 2
+        case 1: return "#ea9999"; // light red 2	
+        case 2: return "#f9cb9c"; // light orange 2	
+        case 3: return "#ffe599"; // light yellow 2
+        case 4: return "#b6d7a8"; // light green 2
+        case 5: return "#a2c4c9"; // light cyan 2	  
+        case 6: return "#a4c2f4"; // light cornflower blue 2
+        case 7: return "#9fc5e8"; // light blue 2	    
+        case 8: return "#b4a7d6"; // light purple 2  
+        case 9: return "#d5a6bd"; // light magenta 2
+        default: return "#ffffff"; // White
+    }
 }

@@ -23,13 +23,15 @@
         </div>
         <div id="menu" class="section-2">
             <pre>
-            <a href="./utility/index.html" style="color: #0b5394" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ projects</a>
-            <a href="./utility/index.html" style="color: #38761d" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ travel</a> 
-            <a href="./utility/index.html" style="color: #85200c" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ music</a>
-            <a href="./utility/index.html" style="color: #bf9000" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ about</a>
-            <a href="./utility/index.html" style="color: #741b47" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/links.json');">→ links</a>
+            <a href="./utility/index.html" id="projects" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ projects</a>
+            <a href="./utility/index.html" id="travel" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ travel</a> 
+            <a href="./utility/index.html" id="music" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ music</a>
+            <a href="./utility/index.html" id="about" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/utility/under_construction.json');">→ about</a>
+            <a href="./utility/index.html" id="links" onclick="return load('https://raw.githubusercontent.com/magiwanders/www.magiwanders.com/main/links.json');">→ links</a>
             </pre>
-            <p style="color: #ff0000; font-size: 0.75em">This website uses local storage only for passing internal variables between pages, it does not store any cookie about you :)</p>
+            <br><br><br>
+            <p id="cookies_title">COOKIE POLICY</p>
+            <p id = "cookies" style="font-size: 0.75em">This website uses local storage only for the sole purpose of passing internal variables between pages, it does not store any cookie about you and no server side data in general :)</p>
         </div>
     </div>
     </div>
@@ -45,18 +47,13 @@
     function load(json_link) {
         localStorage.setItem('json_to_load', json_link)   
     }
+
+    document.getElementById('projects').style.color = color(0)
+    document.getElementById('travel').style.color = color(1)
+    document.getElementById('music').style.color = color(2)
+    document.getElementById('about').style.color = color(3)
+    document.getElementById('links').style.color = color(4)
+    document.getElementById('cookies_title').style.color = color(5)
+    document.getElementById('cookies').style.color = color(5)
 </script>
 </html>
-
-<!--
-7		dark red berry 2	        #85200c
-7		dark red 2	                #990000
-7		dark orange 2	            #b45f06
-7		dark yellow 2	            #bf9000
-7		dark green 2	            #38761d
-7		dark cyan 2	                #134f5c
-7		dark cornflower blue 2	    #1155cc
-7		dark blue 2	                #0b5394
-7		dark purple 2           	#351c75
-7		dark magenta 2	            #741b47
--->

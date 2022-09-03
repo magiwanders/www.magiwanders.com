@@ -71,36 +71,72 @@
         },
         "Travelling":{
             "General":{
-                "Website": {
-                    "href": "http://www.oikos.org/"
+                "Wikivoyage": {
+                    "href": "https://www.wikivoyage.org/",
+                    "description": "Wikimedia project for travel information."
                 },
-                "Workcamps": {
-                    "href": "http://www.oikos.org/campi/default.htm"
+                "Open Street Map Downloader": {
+                    "href": "http://bigmap.osmz.ru/"
                 },
-                "Long Term Volunteering": {
-                    "href": "http://www.volontariato.org/progettivolontariato/default.htm"
+                "YandexMaps": {
+                    "href": "https://yandex.com/maps/?ll=10.349284%2C44.954457&z=6",
+                    "description": "Just like Google Maps but it works much better in former Soviet countries. Also has taxi service!"
+                },
+                "WikiRoutes": {
+                    "href": "https://wikiroutes.info/en/country",
+                    "description": "Public Transport database, expecially useful for non Western countries."
+                },
+                "WikiLoc": {
+                    "href": "https://www.wikiloc.com/wikiloc/map.do?sw=-89.999%2C-179.999&ne=89.999%2C179.999&page=1",
+                    "description": "Detailed information about hiking trails worldwide."
+                },
+                "UrbanRail": {
+                    "href": "http://www.urbanrail.net/",
+                    "description": "Metro database, expecially useful for non Western Countries."
+                },
+                "Seat61": {
+                    "href": "https://www.seat61.com/",
+                    "description": "The Bible of train travelling worldwide. Good information about trains in the former Soviet countries."
+                },
+                "AtlasObscura": {
+                    "href": "https://www.atlasobscura.com/",
+                    "description": "Guide to the world's hidden wonders."
                 }
             },
             "Armenia":{
-                "Website": {
-                    "href": "http://www.oikos.org/"
+                "Armeniapedia": {
+                    "href": "http://www.armeniapedia.org/wiki/Main_Page",
+                    "description": "Like Wikipedia, but for Armenia."
                 },
-                "Workcamps": {
-                    "href": "http://www.oikos.org/campi/default.htm"
-                },
-                "Long Term Volunteering": {
-                    "href": "http://www.volontariato.org/progettivolontariato/default.htm"
+                "1980 Soviet Maps of Armenia": {
+                    "href": "http://www.cilicia.com/maps/50k/index.html"
                 }
             },
             "Uzbekistan":{
-                "Website": {
-                    "href": "http://www.oikos.org/"
+                "Art Hostel (Tashkent)": {
+                    "href": "http://arthostel.uz/",
+                    "description": "Hostel in Uzbek capital Tashkent near Italy Embassy."
                 },
-                "Workcamps": {
-                    "href": "http://www.oikos.org/campi/default.htm"
+                "Registon Zargaron (Samarkand)": {
+                    "href": "https://www.facebook.com/pg/Registon-Zargaron-Samarkand-331766330700325/about/?ref=page_internal",
+                    "description": "Cheap Hotel litterally only meters from the Registon in Samarkand."
                 },
-                "Long Term Volunteering": {
-                    "href": "http://www.volontariato.org/progettivolontariato/default.htm"
+                "Hotel Alibek (Khiva)": {
+                    "href": "https://sites.google.com/site/alibekhotelkhivauzbekistan/",
+                    "description": "Guest house litterally in front of Khiva Old City walls. Also provides day trips to lake Aral."
+                },
+                "Sergei Avtaev (Termez)": {
+                    "href": "mailto: sergei_avtaev@mail.ru",
+                    "description": "Exceptional Guide in Termez."
+                },
+                "Uzbek Railways": {
+                    "href": "https://e-ticket.railway.uz/lang-en/index.html",
+                    "description": "Since 2020 it should be possible to book tickets also for foreign citizens."
+                }
+            },
+            "Italia":{
+                "[IT] Viaggiare in Brianaza": {
+                    "href": "https://www.viaggiareinbrianza.it/"
                 }
             }
         },

@@ -1,6 +1,10 @@
 /* global */
 /* @import url('https://fonts.googleapis.com/css?family=Courier'); */
 
+html{
+    scroll-behavior:smooth
+}
+
 .grid-2{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -78,6 +82,7 @@ a{
     width: 100px;
 }
 /* animations / utilities */
+
 .section-2 a:hover{
     font-size: 1.3rem;
     color: #fff;
@@ -89,6 +94,7 @@ a{
     color: #fff;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 1.6rem;
 }
 
 .white:hover{
