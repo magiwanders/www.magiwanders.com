@@ -2,7 +2,7 @@
     "title": "Links",
     "menu": [
         {
-            "name": "← home",
+            "name": "home",
             "href": "../index.html"
         }
     ],

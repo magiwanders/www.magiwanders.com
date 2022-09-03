@@ -140,6 +140,8 @@ function section_2(section_2) {
             category.appendChild(subcategory)
         }
         category.id = categories[i]
+        category.style['padding-left'] = '5em'
+        category.style['text-indent'] = '-5em'
         div.appendChild(category)
     }
 
