@@ -76,6 +76,8 @@ function section_1(section_1, section_2) {
             link.href = "#" + keys[i]
             link.onclick = "return toggle('"+keys[i]+"');"
             link.innerHTML = '← ' + keys[i]
+            const br = document.createElement("br")
+            div.appendChild(br)
             div.appendChild(link)
         }
     }
