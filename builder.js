@@ -120,6 +120,7 @@ function section_2(section_2) {
             var list = Object.keys(section_2[categories[i]][subcategories[j]])
             for (var k=0; k<list.length; k++) {
                 console.log('          ' + list[k])
+                const link_div = document.createElement('div')
                 const link = document.createElement('a')
                 link.href = section_2[categories[i]][subcategories[j]][list[k]].href
                 link.style.display = 'inline'
@@ -132,7 +133,6 @@ function section_2(section_2) {
                     description.style['font-size'] = '0.75em'
                     link_div.appendChild(description)
                 }
-                const link_div = document.createElement('div')
                 link_div.style['padding-left'] = '9em'
                 link_div.style['text-indent'] = '-9em'
                 subcategory.appendChild(link_div)
