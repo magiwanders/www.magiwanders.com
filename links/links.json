@@ -1,17 +1,33 @@
 {
-    "category_0":{
-        "subcat_0":{
-            "Website": {
-                "title": "",
-                "link": "",
-                "description": ""
-            }
-        },
-        "subcat_1":{},
-        "subcat_2":{}
+    "title": "Links",
+    "menu": [
+        {
+            "name": "← home",
+            "href": "../index.html"
+        }
+    ],
+    "section_1": {
+        "subtitle": "Useful Links",
+        "lines": [
+            "These are links that I often use, or that came very useful in the past, or that I just came across and were blown away by."
+        ]
     },
-    "category_1":{},
-    "category_2":{}
+    "section_2": {
+        "category_0":{
+            "subcat_0":{
+                "Website": {
+                    "image": "",
+                    "title": "",
+                    "link": "",
+                    "description": ""
+                }
+            },
+            "subcat_1":{},
+            "subcat_2":{}
+        },
+        "category_1":{},
+        "category_2":{}
+    }
 }
 
 // [IT] <a href = "https://sci-italia.it/">SCI Italia Info</a> - <a href = "https://workcamps.sci.ngo/icamps/">Ricerca Campi di Volontariato</a> - <a href = "https://sci-italia.it/volontariato-internazionale/volontariato-a-lungo-termine/">Volontariato di lungo termine</a>

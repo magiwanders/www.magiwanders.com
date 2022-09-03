@@ -20,7 +20,7 @@ function read(file, callback)
 function build(json) {
     document.title = json.title
     if (json.menu != undefined) build_menu(json.menu)
-    document.getElementsByClassName("grid-2")[0].replaceChild(section_1(json.section_1), document.getElementsByClassName("section-1")[0])
+    document.getElementsByClassName("grid-2")[0].replaceChild(section_1(json.section_1, json.section_2), document.getElementsByClassName("section-1")[0])
     if (json.section_2 != undefined) document.getElementsByClassName("grid-2")[0].replaceChild(section_2(json.section_2), document.getElementsByClassName("section-2")[0])
 }
 
@@ -28,7 +28,7 @@ function build_menu(menu) {
     for (var i=0; i<menu.length; i++) {
         const entry = document.createElement("a")
         entry.href = menu[i].href
-        entry.innerHTML = menu[i].name
+        entry.innerHTML = '← ' + menu[i].name
         for (var j=0; j<i; j++) {
             entry.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;" + entry.innerHTML
         }
@@ -40,7 +40,7 @@ function build_menu(menu) {
     }
 }
 
-function section_1(section_1) {
+function section_1(section_1, section_2) {
     const div = document.createElement("div")
     if (section_1.image != undefined) {
         const image = document.createElement("img")
@@ -49,9 +49,11 @@ function section_1(section_1) {
         image.style["width"] = "200px"
         div.appendChild(image)
     }
-    const title = document.createElement("h1")
-    title.innerHTML = section_1.title
-    div.appendChild(title)
+    if (section_1.title != undefined) {
+        const title = document.createElement("h1")
+        title.innerHTML = section_1.title
+        div.appendChild(title)
+    }
     const subtitle = document.createElement("h2")
     subtitle.innerHTML = section_1.subtitle
     subtitle.style["padding-right"] = "30px"
@@ -66,6 +68,16 @@ function section_1(section_1) {
         line.style["padding-left"] = "100px"
         line.innerHTML = section_1.lines[i]
         div.appendChild(line)
+    }
+    if (section_2 != undefined) {
+        var keys = Object.keys(section_2)
+        for (var i=0; i<keys.length; i++) {
+            const link = document.createElement("a")
+            link.href = "#" + keys[i]
+            link.onclick = "return toggle('"+keys[i]+"');"
+            link.innerHTML = '← ' + keys[i]
+            div.appendChild(link)
+        }
     }
     div.className = "section-1"
     return div
