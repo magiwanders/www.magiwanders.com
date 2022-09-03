@@ -19,12 +19,9 @@ function read(file, callback)
 
 function build(json) {
     document.title = json.title
-    build_menu(json.menu)
-    const grid_2 = document.createElement("div")
-    grid_2.class = "grid-2"
-    grid_2.appendChild(section_1(json.section_1))
-    if (json.section_2 != undefined) grid_2.appendChild(section_2(json.section_2))
-    document.body.appendChild(grid_2)
+    if (json.menu != undefined) build_menu(json.menu)
+    document.getElementsByClassName("grid-2")[0].replaceChild(section_1(json.section_1), document.getElementsByClassName("section-1")[0])
+    if (json.section_2 != undefined) document.getElementsByClassName("grid-2")[0].replaceChild(section_2(json.section_2), document.getElementsByClassName("section-2")[0])
 }
 
 function build_menu(menu) {
@@ -39,18 +36,30 @@ function build_menu(menu) {
         if (i==0) menu_entry.style["margin-top"] = "1em"
         menu_entry.id = "menu_entry"
         menu_entry.appendChild(entry) 
-        document.body.appendChild(menu_entry)  
+        document.body.insertBefore(menu_entry, document.body.children[0]);
     }
 }
 
 function section_1(section_1) {
     const div = document.createElement("div")
+    if (section_1.image != undefined) {
+        const image = document.createElement("img")
+        image.src = section_1.image
+        image.style["border-radius"] = "50%"
+        image.style["width"] = "200px"
+        div.appendChild(image)
+    }
     const title = document.createElement("h1")
     title.innerHTML = section_1.title
     div.appendChild(title)
     const subtitle = document.createElement("h2")
     subtitle.innerHTML = section_1.subtitle
+    subtitle.style["padding-right"] = "30px"
+    subtitle.style["padding-left"] = "30px"
     div.appendChild(subtitle)
+    const br = document.createElement("br")
+    br.id = "br"
+    div.appendChild(br)
     for (var i=0; i<section_1.lines.length; i++) {
         const line = document.createElement("p")
         line.style["padding-right"] = "100px"
