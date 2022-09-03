@@ -137,11 +137,11 @@ function section_2(section_2) {
                 link_div.style['text-indent'] = '-9em'
                 subcategory.appendChild(link_div)
             }
+            subcategory.style['padding-left'] = '2.5em'
+            subcategory.style['text-indent'] = '-2.5em'
             category.appendChild(subcategory)
         }
         category.id = categories[i]
-        category.style['padding-left'] = '5em'
-        category.style['text-indent'] = '-5em'
         div.appendChild(category)
     }
 
