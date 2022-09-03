@@ -1,10 +1,11 @@
 {
     "title": "Magi Wanders",
-    "menu": {
-        "0":{
+    "menu": [
+        {
             "name": "home",
             "href": "../index.html"
         }
+    ]
     },
     "section-1": {
         "title": "Sorry",
