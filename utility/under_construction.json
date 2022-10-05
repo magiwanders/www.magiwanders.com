@@ -3,7 +3,7 @@
     "menu": [
         {
             "name": "home",
-            "href": "../index.html"
+            "href": "../"
         }
     ],
     "section_1": {
