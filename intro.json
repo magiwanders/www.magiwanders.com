@@ -1,14 +1,12 @@
 {
     "title": "Magi Wanders",
     "section_1": {
-        "image": "images/me.jpg",
+        "image": "simone_shawn_cazzaniga_profile.jpg",
         "title": "Hi,",
         "subtitle": "I'm Shawn",
         "lines": [
-            "I am a graduate M.Eng. in Music&Acoustics Engineering from Milan, currently working on DSP and Electroacoustic R&D Design at BdSound.",
-            "My innate curiosity towards the world has led me to study engineering, and I always strive to learn more in both academic and practical ways. I let my passions for engineering, music and volunteering fuel each other, striving for an all-around personal growth.",
-            "I have been lucky enough to have experienced working in groups, and sometimes leading or mediating between different ones in order to resolve complex problems; I have had the chance to handle performances in public and teach.",
-            "I am constantly looking for ways to combine passion and technology to build something beautiful, and useful."
+            "I am a DSP and Electroacoustic R&D Design Engineer at BdSound",
+            "M.Eng. in Music&Acoustics Engineering (Milan Polytechnic School)"
         ]
     }
 } 
