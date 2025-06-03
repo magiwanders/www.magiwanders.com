@@ -1,0 +1,77 @@
+<head>
+
+</head>
+
+
+
+<body>
+  <h1>W0E1 ATCAM</h1>
+  <p> Let us try out synths!</p>
+
+  <button onclick = "play()"> Start </button>
+  <button onclick = "playA()"> A </button>
+  <button onclick = "playB()"> B </button>
+  <button onclick = "playC()"> C </button>
+  <button onclick = "stop()"> Stop </button>
+  <br><br>
+  <button onclick = "startRandom()"> Random </button>
+  <button onclick = "stopRandom()"> Stop Random </button>
+
+  <p>These synths can only be activated once each. Refresh the page to play them again.</p>
+</body>
+
+
+
+<style>
+
+</style>
+
+
+
+<script>
+  var c = new AudioContext
+  var o = c.createOscillator()
+  o.connect(c.destination)
+
+  var c1 = new AudioContext
+  var o1 = c1.createOscillator()
+  o1.connect(c1.destination)
+
+  function play() {
+    o.start();
+  }
+
+  function playA() {
+    o.frequency.value = 440
+  }
+
+  function playB() {
+    o.frequency.value = 440 * semitone(2)
+  }
+
+  function playC() {
+    o.frequency.value = 440 * semitone(3)
+  }
+
+  function semitone(c) {
+    return Math.pow(2, c/12)
+  }
+
+  function stop() {
+    o.stop()
+  }
+
+  function randomNote() {
+    o1.frequency.value = 1000 * Math.random()
+  }
+
+  function startRandom() {
+    o1.start()
+    setInterval(randomNote(), 100) // Does not work
+  }
+
+  function stopRandom() {
+    o1.stop()
+  }
+
+</script>

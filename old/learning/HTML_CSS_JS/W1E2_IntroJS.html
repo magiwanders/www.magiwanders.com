@@ -1,0 +1,130 @@
+<head>
+
+</head>
+
+
+
+<body>
+  <!--
+<div>The div stack vertically</div>
+<div>The div stack vertically</div>
+<span>The span stacks horizontally</span>
+<span>The span stacks horizontally</span>
+<button> This triggers an action </button>
+<label>This identifies what to write in the input</label>
+<input /> <!-- This is just an input textbox
+End of showcase -->
+
+<div id = "root">
+   <div id = "circle-container">
+<!--     <div class = "circle grey"></div> -->
+<!--     <div class = "circle grey"></div> -->
+<!--     <div class = "circle grey"></div> -->
+<!--     <div class = "circle grey"></div> -->
+<!--     <div class = "circle grey"></div> -->
+  </div>
+  <div id = "input-container">
+    <label for = "input"> Select how many circles to display: </label> <!--for input moves the cursor to input when I ckick on label-->
+    <input id = "input" type = "number"/>
+  </div>
+   <button id = "btn" class = "button">Set</button>
+</div>
+</body>
+
+
+
+<style>
+  .circle {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+  }
+
+  .grey {
+    background-color: grey;
+    border: 2px solid black;
+  }
+
+  .green {
+    background-color: lightgreen;
+    border: 2px solid black;
+  }
+
+  .button {
+    width: 80px;
+    height: 30px;
+    background-color: lightblue;
+    border: 2px solid blue;
+  }
+
+  #input-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #error-label {
+    color: red;
+  }
+
+</style>
+
+
+
+<script>
+  // difference between let and var, let is block scoped, var is function scoped
+  // NEVER USE VAR, only const and let
+
+  const MIN_VALUE = 0;
+  const MAX_VALUE = 99;
+
+  function action() {
+    let value = Number(document.getElementById("input").value)
+    // Number is needed if input is null, makes it zero
+
+    const isInRange = value <= MAX_VALUE && value >= MIN_VALUE;
+    console.log(isInRange);
+
+    const errorLabel = document.getElementById("error-label");
+    if(isInRange && errorLabel) errorLabel.remove();
+
+    if(!isInRange) {
+      const inputContainer = document.getElementById("input-container");
+      if(!errorLabel) {
+        const child = document.createElement("div");
+        child.setAttribute("id", "error-label");
+        const text = document.createTextNode("Error on range \(" + MIN_VALUE + " to " + MAX_VALUE + "\)");
+        child.appendChild(text)
+        inputContainer.appendChild(child)
+      }
+    }
+
+    const circleContainer = document.getElementById("circle-container")
+
+    // removes all circles
+    while(circleContainer.lastChild) {
+      circleContainer.removeChild(circleContainer.lastChild)
+    }
+
+    // add children to circle container
+    let index=0;
+    while (value > MIN_VALUE && value <= MAX_VALUE) {
+      const child = document.createElement("div")
+      child.classList.add("circle") // adds class before appending
+
+      const isEven = index%2;
+      if (isEven) {
+        child.classList.add("grey")
+      } else {
+        child.classList.add("green")
+      }
+
+      circleContainer.appendChild(child)
+      value--
+      index++
+    }
+  }
+
+  btn.onclick = action;
+
+</script>

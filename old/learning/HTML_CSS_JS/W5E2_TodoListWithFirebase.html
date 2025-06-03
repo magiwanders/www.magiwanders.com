@@ -1,0 +1,284 @@
+<head>
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+</head>
+
+
+
+<body>
+  <div id = "container">
+    <div id = "topbar">
+      <h2 id = "title">Todo list:</h2>
+      <div id = "completed_box" class = "topbar_box">
+        <label for = "only_completed_textbox">Completed tasks only</label>
+        <input id = "only_completed_input" type = "checkbox">
+      </div>
+      <div id = "add_task_box" class = "topbar_box">
+        <input id = "task_name_input" type = "text" placeholder = "Remember to...">
+        <button id = "add_task_button"> Add Task </button>
+      </div>
+    </div>
+    <ul id = "list">
+    </ul>
+  <div>
+</body>
+
+
+
+<style>
+  #container {
+
+    width: 100%;
+    background-color: yellow;
+    position: relative;
+    border-radius: 3px;
+  }
+
+  #topbar {
+    position: relative;
+    background-color: orange;
+
+  }
+
+  #title {
+    margin-left: 5px;
+    margin-top: 0px;
+    left: 5px;
+  }
+
+  .topbar_box {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+
+  #completed_box {
+    left: 200px;
+  }
+
+  #add_task_box {
+    right: 3px;
+  }
+
+  #list {
+    padding-bottom: 10px;
+    padding-right: 10px;
+  }
+  #task_name_input  {
+    min-width:400px;
+  }
+
+  .task {
+    position: relative;
+    background-color: red;
+    margin: 5px;
+    border-radius: 3px;
+  }
+
+  .completed {
+    background-color: green;
+  }
+
+  .task_name {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .task_controls {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 200px;
+
+  }
+
+  .completed_checkbox {
+    display: inline-block;
+  }
+
+  .delete_button {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+  }
+</style>
+
+
+
+<script>
+  // UTILITY (data type creator)
+    function makeElementModel(propertiesList) {
+      var properties = propertiesList.split(' ')
+      var count = properties.length
+      function constructor() {
+        for (var i = 0; i < count; i++) {
+          this[properties[i]] = arguments[i]
+        }
+      }
+      return constructor
+    }
+
+  // Here is the data type we are going to use
+  var Task = makeElementModel("name isCompleted") // The type of struct that describes a task has two attributes
+
+  // FIREBASE CONFIG https://firebase.google.com/docs/firestore/quickstart
+   // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAS_g6wsOjFb34kRDlPNhw3Bjdf7MgqmHA",
+      authDomain: "w5e3-7e60e.firebaseapp.com",
+      databaseURL: "https://w5e3-7e60e.firebaseio.com",
+      projectId: "w5e3-7e60e",
+      storageBucket: "w5e3-7e60e.appspot.com",
+      messagingSenderId: "817930904155",
+      appId: "1:817930904155:web:540b1356219428abbd557e"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig); // Starts the firebase process
+
+  var db = firebase.firestore() // Gives reference to actual datbase.
+
+  // MODEL
+  onlyCompleted = false
+  var tasks = new Array()
+
+  // Model initialization
+  // initialize onlyCompleted
+  const displaySettings = db.collection("settings").doc("display_list")
+  displaySettings.get().then(function(display_list) {
+      if (display_list.exists) {
+          const tempOnlyCompleted = display_list.data().onlyCompleted
+          onlyCompleted = tempOnlyCompleted
+          document.getElementById("only_completed_input").checked = tempOnlyCompleted
+      }
+  })
+
+  // initialize tasks
+  db.collection("tasks").get().then(function(task_list) {
+      task_list.forEach(function(task) {
+            const taskName = task.id
+            const taskCompleted = task.data().isCompleted
+            tasks.push(new Task(taskName, boolOf(taskCompleted)))
+            render()
+      });
+  })
+
+  function boolOf(int) {
+    if(int==0) return false
+    return true
+  }
+
+    // Returns the MODEL task with a given name
+    function getTaskNamed(name) {
+      for(i=0; i<tasks.length;i++) { // Cycles all MODEL tasks
+        if(tasks[i].name == name) { return tasks[i] } // Returns the MODEL task if the name matches the argument
+      }
+      return null // In case there is no MODEL task with that name
+    }
+
+    // Returns true if there is already a task with that name, false otherwise
+    function alreadyATask(nameCandidate) {
+      for(i=0; i<tasks.length;i++) { // Cycles all MODEL tasks
+        if(tasks[i].name == nameCandidate) { return true } // Returns true is nameCandidate is found
+      }
+      return false // In case there is no MODEL task with that name
+    }
+
+
+
+
+
+  // VIEW - all functions related to creating and showing what user sees
+
+  // Builds and returns the HTML structure of the MATERIAL task
+    // Builds and returns the HTML structure of the MATERIAL task
+    function createTask(name, isCompleted) {
+      const completed_checkbox = document.createElement("input") // Create complete_checkbox
+      completed_checkbox.classList.add("completed_checkbox")
+      completed_checkbox.setAttribute("type", "checkbox");
+      completed_checkbox.checked = isCompleted
+
+      const label = document.createElement("label") // Create label of complete_checkbox
+      label.innerHTML = "Completed"
+
+      const delete_button = document.createElement("button") // Create delete button
+      delete_button.classList.add("delete_button")
+      delete_button.innerHTML = "Delete"
+
+      const task_controls = document.createElement("div") // Create container for all the above
+      task_controls.classList.add("task_controls")
+      task_controls.appendChild(completed_checkbox)
+      task_controls.appendChild(label)
+      task_controls.appendChild(delete_button)
+
+      const task_name = document.createElement("p") // Create name of the task to which the argument name is assigned
+      task_name.classList.add("task_name")
+      task_name.innerHTML = name
+
+      const task_container = document.createElement("div") // Create container for all the above
+      task_container.classList.add("task_container")
+      task_container.appendChild(task_controls)
+      task_container.appendChild(task_name)
+
+      const task = document.createElement("li") // Create list entry with the task container as child
+      task.classList.add("task") // Contains CSS for color red (default is isCompleted=false)
+      if(isCompleted) { task.classList.add("completed") } // Contains CSS for color green, which overrides red in case the task has isCompleted=true at the time of the render
+      task.appendChild(task_container)
+
+      // Behaviour of the current checkbox
+          completed_checkbox.onclick = function() {
+            getTaskNamed(name).isCompleted = completed_checkbox.checked // Updates model with current checkbox boolean value
+            db.collection("tasks").doc(name).set( {isCompleted: completed_checkbox.checked} ).then( () => { render() })
+          }
+
+          // Behaviour of the current delete button
+          delete_button.onclick = function() {
+            tasks.splice(tasks.indexOf(getTaskNamed(name)), 1) // removes from tasks array 1 element starting from the index of the current MODEL task (deletes just current model task)
+            db.collection("tasks").doc(name).delete().then( () => { render() })
+          }
+
+      return task // Returns the whole list entry
+    }
+  // Translates MODEL into MATERIAL view
+  function render() {
+    document.getElementById("list").innerHTML = "" // Clears all MATERIAL tasks, readying the list for the new render()
+    for(i=0;i<tasks.length;i++) { // Cycles all MODEL tasks and renders them one by one
+      if(!onlyCompleted || tasks[i].isCompleted) { // if(onlyCompleted) only the tasks with isCompleted=true are rendered, if(!onlyCompleted) all tasks are rendered
+        console.log(i, onlyCompleted)
+        const updatedTask = createTask(tasks[i].name, tasks[i].isCompleted); // new MATERIAL task is created from MODEL task data
+        document.getElementById("list").appendChild(updatedTask); // MATERIAL task added to list
+      }
+    }
+    //link() // Links complete_checkboxes and delete_buttons to their respective functions.
+  }
+
+
+
+  // CONTROL - all webapp funcitons and behaviours
+
+  // Behaviour when the MATERIAL completed tasks only checkbox is toggled
+  const only_completed_checkbox = document.getElementById("only_completed_input")
+  only_completed_checkbox.onclick = showOnlyCompleted
+  function showOnlyCompleted() {
+    onlyCompleted = document.getElementById("only_completed_input").checked // Updates the MODEL completed tasks only checkbox boolean value
+    db.collection("settings").doc("display_list").set( {onlyCompleted: onlyCompleted} ).then( () => { render() })
+  }
+
+  // Behaviour when the MATERIAL addTask button is pressed
+  const add_task_button = document.getElementById("add_task_button")
+  add_task_button.onclick = addTask
+  function addTask() {
+    const task_name_text = document.getElementById("task_name_input").value // Gets name of the wannabe-task from input
+    if(isValid(task_name_text)) { // Checks if a task with that name is acceptable
+      document.getElementById("task_name_input").value = "" // In case it is accepted, clears input
+      const newTask = new Task(task_name_text, false) // Creates new MODEL task from name input and default false isCompleted value
+      tasks.push(newTask) // Adds it to tasks
+      db.collection("tasks").doc(task_name_text).set( {isCompleted: 0} ).then( () => { render() }) // Creates new remote database doc under the collection "tasks" and notifies by console.
+    }
+  }
+
+  // Checks that the task name is acceptable (ie not blank and not already among tasks. No 2 tasks with same name are accepted)
+  function isValid(nameCandidate) {
+    return nameCandidate != "" && !alreadyATask(nameCandidate)
+  }
+</script>

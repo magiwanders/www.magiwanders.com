@@ -1,0 +1,137 @@
+<head>
+
+</head>
+
+
+
+<body>
+  <!--
+POSITIONINGS:
+
+static
+relative-type: relative(to its original position), absolute(to page), fixed(to viewport), sticky (has proprieties relative to scroll)
+
+
+nb. span is like a div but inline.
+nb. relative with no offset is like static
+nb. absolute with respect to the first parent element.
+nb. the main difference between relative and absolute is that relative still occupies space on the html flow. Absolute soes not.
+display: flex;
+reccomended option!
+-->
+
+<h1>CSS positioning example</h1>
+
+<div id = "main-container">
+  <div id = "static">
+    I am a <span>static</span> element. I follow the normal flow.
+  </div>
+
+  <div id = "relative">
+    I am a <span>relative</span> element. I can be offset by my normal position. Properties are top, bottom, right, left.
+  </div>
+
+   <div id = "relative-bis">
+    I am a <span>relative</span> element. I can be offset by my normal position. Properties are top, bottom, right, left. IF I AM NOT OFFSET I BEHAVE LIKE STATIC!
+
+     <div id = "absolute">
+    I am a <span>absolute</span> element. I am out of the flow, so I dont count for spacing, and I am absolute with respect to my first parent with any positioning other than static (grey).
+  </div>
+
+  </div>
+
+  <div id = "absolute-bis">
+     I am a <span>absolute</span> element. My parent must be reative in order to stay inside it.
+  </div>
+
+  <div id = "fixed">
+    I am a <span>fixed</span> element. I am fixed with the respect to scrolling and offset with respect to the viewport of the browser. If the container (putple) gets transformed it behaves like a relative.
+  </div>
+
+  <div id = "sticky">
+    I am a <span>sticky</span> element. I am relative until i would disappear from viewport. Instead I stick to the specified offset
+  </div>
+</div>
+</body>
+
+
+
+<style>
+  h1 {
+    color: blue;
+    text-align: center;
+  }
+
+  div {
+    border:  5px solid grey;
+    padding: 5px;
+  }
+
+  #main-container {
+    height: 1300px;
+    border-color: purple;
+    position: relative; /*The bottom right absolute div would not stay inside the purple container if this was not relative, it would  follow the viewport.*/
+  }
+
+  span {
+    background-color: lightgrey;
+    text-transform: uppercase;
+  }
+
+  #static {
+    height: 100px;
+    border-color: green;
+    position: static;
+  }
+
+  #relative {
+    border-color: gold;
+    height: 100px;
+    position: relative;
+    top: 50px;
+    left: 20px;
+    z-index: 99; /*Moves yellow  on top of grey*/
+  }
+
+  #relative-bis {
+    position: relative;
+    height: 100px;
+  }
+
+  #absolute {
+    border-color: red;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  #absolute-bis {
+    position: absolute;
+    border-color: red;
+    bottom: 0px;
+    right: 0px;
+    width: 200px;
+    height: 100px;
+  }
+
+  #fixed {
+    border-color: blue;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+  }
+
+  #sticky {
+    position: sticky;
+    top: 10px;
+    left: 100px;
+    width: 200px;
+  }
+
+</style>
+
+
+
+<script>
+
+</script>

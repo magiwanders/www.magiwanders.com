@@ -1,0 +1,60 @@
+<head>
+
+</head>
+
+
+
+<body>
+  <canvas width=1000
+          height=800
+          style="border: 1px solid black"></canvas>
+</body>
+
+
+
+<style>
+
+</style>
+
+
+
+<script>
+  // Get oscillator
+  c = new AudioContext;
+  o = c.createOscillator();
+
+  // Get canvas
+  canvas = document.querySelector("canvas");
+  ctx = canvas.getContext("2d")
+
+  // Get Analyzer node and connect it to the oscillator
+  a = c.createAnalyser()
+  o.connect(a);
+
+  // Start the oscillator
+  o.start();
+
+  // Gets array of unsigned bytes just as long as half fft
+  var data = new Uint8Array(a.frequencyBinCount)
+
+  function drawAnalyser() {
+    // Wait to synch with framerate
+    requestAnimationFrame(drawAnalyser);
+    // Clear the canvas
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    // Start drawing
+    ctx.beginPath();
+    // Gets the audio buffer
+    a.getByteTimeDomainData(data);
+    // Draws it
+    for(i=0;i<data.length;i++) {
+      ctx.lineTo(i, data[i])
+    }
+    // Actually display the drawing. 
+    ctx.stroke()
+}
+
+drawAnalyser()
+
+canvas.onclick = function() {c.resume()}
+</script>

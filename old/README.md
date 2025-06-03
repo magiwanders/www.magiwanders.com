@@ -1,0 +1,93 @@
+#THIS WEBSITE IS UNDERGOING A MAJOR REBUILD
+  
+Here is the structure:
+
+ - Hidden Magi Wanders Section
+  - Music
+    - Idiofoni - Demential-Rock
+    - Polyphonic Choirs @ C.R.C.
+    - Ginsong Band - Live Theater
+    - Licenza di Teoria e Solfeggio
+    - Temperaments and Scales Project
+  - Travel
+    - Volunteering
+      - [2017] Portugal - Palombar PT-IPJ 21.4
+      - [2019] Slovakia - Eleuzina Cultural Centre
+      - [2019] Armenia - HUJ AM-HUJ 18.4
+    - Leisure
+      - [2014] Puglia by Bike
+      - [2016] Monza-Roma by Bike
+      - [2018] Uzbekistan
+  - Hobbies
+    - Chinese Language
+    - S.C.I.
+    - P.A.D.I.
+    - Translations
+    - Photography
+    - Ocarina, Bonsai, IndoorOrto, SlideRules, janko&microtonal keyboards, bookBinding, ethicalhack
+  - Social
+    - Scout
+    - S.C.I.
+    - Blood Donations
+    - Protezione Civile
+    - Associazione ItaliArmenia
+    - Linux Group
+
+  - Progetti Fallimentari
+ - Home
+  - Profile
+  - Contacts
+  - CV
+ - Menu
+  - Education
+    - Msc. Music & Acoustics Engineering
+      - Acoustics Project - Audio Source Localization
+      - Software Engineering Project - Java Client-Server application
+      - Videogame Design and Programming Project - Unity/C# 3D Game
+      - Design and Implementation of Flutter/Dart Mobile Applications Project
+      - Web Application Project - Beatbox Machine  
+    - Bsc. Ingegneria dell'Automazione
+      - MATLAB DSP
+      - Fundamentals of Informatics Lab Tutor
+    - Liceo Classico
+      - School Journal
+      - School Ensemble
+      - Romanae Disputationes
+    - Further Knowledge & Thematic Pages
+      - Carreer Relevant Courses
+        - Nand2Tetris (Jerusalem Hebrew Univerity)
+        - Leadership (Rice University)
+        - UX/UI Design
+      - Carreer relevant Hobbies
+        - Home Server
+        - Home Lab
+        - Home Studio
+        - Linux
+        - 3D Printing
+        - Ham Radio
+        - XR Developemen
+      - Programming Languages
+        - C
+        - C++
+        - C#
+        - Python
+        - Java
+        - JavaScript (with HTML and CSS)
+        - Dart
+        - MATLAB
+        - SQL
+
+  - Projects
+    - This very website
+      - History
+        - Spratto Zero (Raspberry Pi Zero)
+        - Spratto Uno (VPS, .tk)
+        - Spratto Uno+ (VPS, Cloudflare, .com)
+        - Spratto Due (Github)
+        - Spratto Tre (Github + Flutter)
+        - Spratto Quattro (Home Server)
+      - Flutter Project
+      - Link Saver chrome&firefox extension
+    - Nand2Tetris
+      - Java Nand2Tetris -> JS Nand2Tetris
+      - Augmented Nand2Tetris

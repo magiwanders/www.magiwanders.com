@@ -1,0 +1,61 @@
+<head>
+
+</head>
+
+
+
+<body>
+<div id = "button"></div>
+</body>
+
+
+
+<style>
+  #button {
+    width: 50px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 5px;
+  }
+</style>
+
+
+
+<script>
+  // Argumets: function to be called, delay in ms
+  // setTimeout(changeColor, 2000)
+
+  // Arguments; function to be called on loop, delay in ms
+  // setInterval(clicked, 1000)
+
+
+  document.getElementById("button").onclick = clickedExercise
+  const name = "Simone"
+  var r = 0
+  var g = 0
+  var b = 0
+
+  function clickedExercise() {
+    setTimeout(forever, 1000)
+  }
+
+  function forever() {
+    setInterval(changeColor, 50)
+  }
+
+  function clicked() {
+    console.log ("Hello " + name + "!")
+    setInterval(changeColor, 500)
+  }
+
+  function changeColor() {
+    // r = Math.random()*255
+    // g = Math.random()*255
+    // b = Math.random()*255
+    r = (r+3)%256
+    g = (g+5)%256
+    b = (b+7)%256
+    console.log(r)
+    button.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"
+  }
+</script>

@@ -1,0 +1,202 @@
+<head>
+
+</head>
+
+
+
+<body>
+  <div id="reset" class="button">Reset</div>
+
+  <div id="select" class="button">Select all</div>
+
+  <div id="restore" class="button">Restore</div>
+
+  <div id="speaker" class="speaker"></div>
+
+  <div id="bar"></div>
+</body>
+
+
+
+<style>
+  #bar {
+    background-color: grey;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .key {
+    width: 50px;
+    height: 80px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: lightgrey;
+    border: 2px solid grey;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .red {
+    background-color: #ea4545;
+    border-color: #b33232;
+  }
+
+  .orange {
+    background-color: orange;
+    border-colorborder-color: darkorange;
+  }
+
+  .yellow {
+    background-color: #fdd238a3;
+    border-color: #ad8c19a3;
+  }
+
+  .white {
+    background-color: #eeeeee;
+    border-color: lightgrey;
+  }
+
+  .selected {
+    background-color: green;
+    border-color: darkgreen;
+  }
+
+  .circle {
+    width: 20px;
+    height: 20px;
+    border: 1px solid grey;
+    background-color: lightgrey;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .active-circle {
+    border-color: green;
+    background-color: green;
+  }
+
+  .button {
+    background: blue;
+    color: white;
+    text-align: center;
+    width: 50px;
+    margin:10px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .speaker {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: grey;
+    margin-bottom: 5px;
+  }
+
+  .beep {
+    background-color: green;
+  }
+
+</style>
+
+
+
+<script>
+  // MODEL
+  const modelLength = 16
+  var model = Array(modelLength).fill(false)
+  var previous_model = Array(modelLength).fill(false)
+  var tick = 0
+
+  let keys = document.querySelectorAll(".key");
+
+
+
+  // VIEW
+
+  // Creates a button of the specified color with its circle indicator
+  function createButton(color) {
+    const button = document.createElement("div");
+    button.classList.add("key", color);
+
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    button.appendChild(circle);
+
+    return button
+  }
+
+  // Different from the normal render function because it has to create all the buttons
+  function firstPainfulRender() {
+    const barContainer = document.getElementById("bar")
+    const colors = ["red", "orange", "yellow", "white"]
+
+    for (let i = 0; i < 4; i++) { // For each color
+      for (let j = 0; j < 4; j++) { // For each button in that color
+        const button = createButton(colors[i]) // Create actual button of that color
+        barContainer.appendChild(button) // Add it to the bar div
+        link(button, i*4+j)
+      }
+    }
+    render()
+  }
+
+  // Updates the classes to display the selected keys as described in model.
+  function render() {
+    keys = document.querySelectorAll(".key");
+    keys.forEach(function(key, index) {
+      key.classList.toggle("selected", index == tick); // if model[index] is true selected
+      key.firstElementChild.classList.toggle("active-circle", model[index]);
+    })
+    speaker.classList.toggle("beep", model[tick])
+  }
+
+
+
+  // CONTROLLER
+
+  function link(button, index) {
+    button.onclick = function() {
+      model[index] = !model[index];
+      render()
+    }
+  }
+
+  function reset_all() {
+    previous_model = model
+    model = Array(modelLength).fill(false)
+    render()
+  }
+
+  reset.onclick = reset_all
+
+  function select_all() {
+    previous_model = model
+    model = Array(modelLength).fill(true)
+    render()
+  }
+
+  select.onclick = select_all
+
+  function restore_all() {
+    model = previous_model
+    render()
+  }
+
+  restore.onclick = restore_all
+
+  function next_tick() {
+    tick = (tick + 1) % modelLength
+    render()
+  }
+
+  setInterval(next_tick, 300)
+
+  firstPainfulRender()
+
+</script>
