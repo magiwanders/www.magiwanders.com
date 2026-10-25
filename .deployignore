@@ -1,0 +1,7 @@
+# Glob patterns (relative to repo root) of committed files never uploaded to FTP
+.gitignore
+.deployignore
+.env.example
+deploy.py
+README.md
+old/*
