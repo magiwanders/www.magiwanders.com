@@ -21,8 +21,7 @@
         </div>
         <div id="menu" class="section-2">
             <pre>
-            <a href="https://www.magiwanders.com/redirects/cv.html">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i> cv.pdf</a>
-            <a href="https://www.magiwanders.com/redirects/cv_1page.html">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i> cv_1page.pdf</a>
+            <a id="cv_both" href="https://www.magiwanders.com/redirects/cv.html">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i> cv.pdf</a> ( <a href="https://www.magiwanders.com/redirects/cv.html">full</a> or <a href="https://www.magiwanders.com/redirects/cv_1page.html">1page</a> )
             </pre>
             <br><br><br>
             <p id="cookies_title">COOKIE POLICY</p>
@@ -37,6 +36,19 @@
     document.getElementsByClassName("section-1")[0].insertBefore(contacts, document.getElementById("br"))
     const br = document.createElement("br")
     document.getElementsByClassName("section-1")[0].insertBefore(br, document.getElementById('contacts'))
+
+    document.getElementById('cv_both').addEventListener('click', (e) => {
+        e.preventDefault()
+        const pdfs = ['simone_shawn_cazzaniga_cv_2507.pdf', 'simone_shawn_cazzaniga_cv_2507_1page.pdf']
+        pdfs.forEach((pdf, i) => setTimeout(() => {
+            const a = document.createElement('a')
+            a.href = pdf
+            a.download = pdf
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+        }, i * 300))
+    })
 
     function load(json_link) {
         localStorage.setItem('json_to_load', json_link)   
