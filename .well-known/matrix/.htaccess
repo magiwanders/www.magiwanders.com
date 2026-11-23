@@ -1,0 +1,5 @@
+# Matrix delegation for @user:magiwanders.com (the server runs at matrix.magiwanders.com)
+ForceType application/json
+<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
+</IfModule>
